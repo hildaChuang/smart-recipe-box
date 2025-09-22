@@ -5,7 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.dev/license
  */
-import {Component, signal} from '@angular/core';
+import {Component, computed, signal} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import { RecipeModel } from './models';
 import { MOCK_RECIPES } from './mock-recipes';
@@ -21,6 +21,15 @@ export class App {
   recipes: RecipeModel[] = MOCK_RECIPES;
   protected currentRecipe = signal(this.recipes[0]);
   servings = signal(1);
+  protected adjustedIngredients = computed(() => {
+    const recipe = this.currentRecipe();
+    const servings = this.servings();
+    
+    return recipe.ingredients.map(ingredient =>({
+      ...ingredient,
+      quantity: ingredient.quantity * servings
+    }))
+  });
 
   // 一個受保護的方法，用來處理點擊事件
   protected increment(no: number): void {

@@ -209,6 +209,14 @@
 
     <h2>{{ currentRecipe().name }}</h2>
     <p>{{ currentRecipe().description }}</p>
+    <p>Ingredients:</p>
+    <ul>
+      @for (currentIngredient of adjustedIngredients(); track currentIngredient.name) {
+        <li>
+          {{ currentIngredient.name }}: {{currentIngredient.quantity}} {{currentIngredient.unit}}
+        </li>
+      }
+    </ul>
   </div>
 </main>
 
