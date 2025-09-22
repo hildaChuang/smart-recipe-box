@@ -203,6 +203,10 @@
     <button (click)="increment(1)">Recipe 1</button>
     <button (click)="increment(2)">Recipe 2</button>
 
+    Servings: {{ servings() }}
+    <button (click)="updateServings(false)">-</button>
+    <button (click)="updateServings(true)">+</button>
+
     <h2>{{ currentRecipe().name }}</h2>
     <p>{{ currentRecipe().description }}</p>
   </div>

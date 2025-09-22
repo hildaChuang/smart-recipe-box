@@ -20,6 +20,7 @@ export class App {
   protected readonly title = signal('My Recipe Box');
   recipes: RecipeModel[] = MOCK_RECIPES;
   protected currentRecipe = signal(this.recipes[0]);
+  servings = signal(1);
 
   // 一個受保護的方法，用來處理點擊事件
   protected increment(no: number): void {
@@ -33,5 +34,14 @@ export class App {
         break;
     }
     // 我們之後會學習如何更新 signal 的值
+  }
+
+  updateServings(isAdd: boolean) {
+    if(isAdd) {
+      this.servings.update(s => s + 1)
+    } else {
+      this.servings.update(s => s - 1)
+    }
+    console.log(this.servings())
   }
 }
