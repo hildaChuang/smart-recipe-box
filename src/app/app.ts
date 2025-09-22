@@ -7,6 +7,8 @@
  */
 import {Component, signal} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
+import { RecipeModel } from './models';
+import { MOCK_RECIPES } from './mock-recipes';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +18,12 @@ import {RouterOutlet} from '@angular/router';
 })
 export class App {
   protected readonly title = signal('My Recipe Box');
-  
+  recipes: RecipeModel[] = MOCK_RECIPES;
+  protected currentRecipe = signal(this.recipes[0]);
+
   // 一個受保護的方法，用來處理點擊事件
   protected increment(no: number): void {
+    this.currentRecipe.set(this.recipes[no-1]);
     switch(no) {
       case 1:
         console.log('Show first recipe');

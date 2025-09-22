@@ -202,6 +202,9 @@
 
     <button (click)="increment(1)">Recipe 1</button>
     <button (click)="increment(2)">Recipe 2</button>
+
+    <h2>{{ currentRecipe().name }}</h2>
+    <p>{{ currentRecipe().description }}</p>
   </div>
 </main>
 
