@@ -16,4 +16,17 @@ import {RouterOutlet} from '@angular/router';
 })
 export class App {
   protected readonly title = signal('My Recipe Box');
+  
+  // 一個受保護的方法，用來處理點擊事件
+  protected increment(no: number): void {
+    switch(no) {
+      case 1:
+        console.log('Show first recipe');
+        break;
+      case 2:
+        console.log('Show second recipe');
+        break;
+    }
+    // 我們之後會學習如何更新 signal 的值
+  }
 }
