@@ -1,12 +1,12 @@
 <div class="recipe-card">
-    <img [src]="recipe().imgUrl" [alt]="recipe().name" />
+    <img [src]="recipe()?.imgUrl" [alt]="recipe()?.name" />
 
     <div class="recipe-content">
-        <h2>{{ recipe().name }}</h2>
-        @if (recipe().isFavorite) {
+        <h2>{{ recipe()?.name }}</h2>
+        @if (recipe()?.isFavorite) {
             <span>★★★★★</span>
         }
-        <p>{{ recipe().description }}</p>
+        <p>{{ recipe()?.description }}</p>
     </div>
 
     <div class="servings-control">

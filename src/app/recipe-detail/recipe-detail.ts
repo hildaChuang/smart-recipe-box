@@ -9,14 +9,14 @@ import { RecipeModel } from '../models';
   styleUrl: './recipe-detail.css'
 })
 export class RecipeDetail {
-  readonly recipe = input.required<RecipeModel>();
+  readonly recipe = input<RecipeModel | null>();
 
   protected servings = signal(1);
   protected readonly adjustedIngredients = computed(() => {
     const recipe = this.recipe();
     const servings = this.servings();
 
-    return recipe.ingredients.map(ingredient =>({
+    return recipe?.ingredients.map(ingredient =>({
       ...ingredient,
       quantity: ingredient.quantity * servings
     }))
