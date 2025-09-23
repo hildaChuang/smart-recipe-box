@@ -3,6 +3,9 @@
 
     <div class="recipe-content">
         <h2>{{ recipe().name }}</h2>
+        @if (recipe().isFavorite) {
+            <span>★★★★★</span>
+        }
         <p>{{ recipe().description }}</p>
     </div>
 

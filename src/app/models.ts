@@ -8,7 +8,8 @@ export interface RecipeModel {
 id: number;
 name: string;
 description: string;
-imgUrl: string; // 新增這一行
+imgUrl: string;
+isFavorite: boolean;
 ingredients: Ingredient[];
 }
   
