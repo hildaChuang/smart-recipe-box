@@ -1,0 +1,98 @@
+:host {
+    display: block;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.recipe-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.recipe-card img {
+    width: 300px;
+    /* 固定圖片寬度 */
+    height: auto;
+    object-fit: cover;
+    /* 確保圖片不變形，會自動裁剪 */
+    border-radius: 8px;
+    /* 圖片也加上圓角 */
+}
+
+.recipe-content {
+    /* 這個容器將會佔滿剩下的所有空間 */
+    flex: 1;
+}
+
+.recipe-content h2 {
+    font-size: 2.25rem;
+    /* 放大標題 */
+    font-weight: 600;
+    /* 加粗字體 */
+    margin: 0 0 8px 0;
+    /* 清除預設 margin，只在下方留白 */
+    font-family: 'Inter Tight', sans-serif;
+    /* 使用和 h1 類似的字體增加設計感 */
+}
+
+.recipe-content p {
+    font-size: 1rem;
+    color: #555;
+    /* 使用深灰色，而不是純黑，讓文字更柔和 */
+    line-height: 1.6;
+    /* 增加行高，提升可讀性 */
+    margin-bottom: 24px;
+    /* 在描述下方留出較大空間 */
+}
+
+/* --- 4. 份量控制項 --- */
+.servings-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* 讓 "份量" 文字和按鈕分開 */
+    background-color: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.servings-control h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.servings-buttons button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    border-radius: 50%;
+    /* 圓形按鈕 */
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-left: 8px;
+}
+
+.servings-buttons button:hover {
+    background-color: #e9ecef;
+}
+
+/* --- 5. 臨時的食材列表 --- */
+.ingredients, pre {
+    background-color: #333;
+    color: #f0f0f0;
+    padding: 16px;
+    border-radius: 8px;
+    white-space: pre-wrap; /* 自動換行 */
+  }
