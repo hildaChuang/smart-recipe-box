@@ -1,21 +1,9 @@
 <h1>{{ title() }}</h1>
 <p>The Angular Tutor For Hilda</p>
 
-<button (click)="increment(1)">Recipe 1</button>
-<button (click)="increment(2)">Recipe 2</button>
+@for (recipe of recipes; track $index) {
+    <button (click)="onSelect($index)">Recipe {{$index + 1}}</button>
+}
 
-Servings: {{ servings() }}
-<button (click)="updateServings(false)">-</button>
-<button (click)="updateServings(true)">+</button>
-
-<h2>{{ currentRecipe().name }}</h2>
-<p>{{ currentRecipe().description }}</p>
-<p>Ingredients:</p>
-<ul>
-    @for (currentIngredient of adjustedIngredients(); track currentIngredient.name) {
-    <li>
-        {{ currentIngredient.name }}: {{currentIngredient.quantity}} {{currentIngredient.unit}}
-    </li>
-    }
-</ul>
-<img [src]="currentRecipe().imgUrl" [alt]="currentRecipe().name" />
+<hr/>
+<app-recipe-detail [recipe]="currentRecipe()"></app-recipe-detail>
