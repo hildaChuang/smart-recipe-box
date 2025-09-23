@@ -5,6 +5,7 @@ export const MOCK_RECIPES: RecipeModel[] = [
     id: 1,
     name: 'Spaghetti Carbonara',
     description: 'A classic Italian pasta dish.',
+    imgUrl: 'https://via.placeholder.com/300x200.png?text=Spaghetti+Carbonara', // 新增這一行
     ingredients: [
       { name: 'Spaghetti', quantity: 200, unit: 'g' },
       { name: 'Guanciale', quantity: 100, unit: 'g' },
@@ -17,6 +18,7 @@ export const MOCK_RECIPES: RecipeModel[] = [
     id: 2,
     name: 'Caprese Salad',
     description: 'A simple and refreshing Italian salad.',
+    imgUrl: 'https://via.placeholder.com/300x200.png?text=Caprese+Salad', // 新增這一行
     ingredients: [
       { name: 'Tomatoes', quantity: 4, unit: 'each' },
       { name: 'Fresh Mozzarella', quantity: 200, unit: 'g' },
