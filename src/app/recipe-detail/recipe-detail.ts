@@ -1,11 +1,11 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { Recipe } from '../recipe';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './recipe-detail.html',
   styleUrl: './recipe-detail.css'
 })
