@@ -7,14 +7,12 @@
  */
 import { Component } from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import { RecipeList } from './recipe-list/recipe-list';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
-    RecipeList,
+    RouterOutlet
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',

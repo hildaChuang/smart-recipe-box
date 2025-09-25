@@ -2,26 +2,15 @@
 <p>The Angular Tutor For Hilda</p>
 
 <app-recipe-form></app-recipe-form>
-<hr/>
+<hr />
 
 <div class="filter-recipe">
     <label for="search">Filter Recipes:</label>
-    <input id="search"
-            type="text"
-            [ngModel]="searchTerm()"
-            (ngModelChange)="searchTerm.set($event)"
-    >
+    <input id="search" type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)">
 </div>
 
 @for (recipe of filteredRecipes(); track recipe.id) {
-    <button (click)="onSelect(recipe.id)">{{ recipe.name }}</button>
+<a [routerLink]="['/recipes', recipe.id]">{{ recipe.name }}</a>
 } @empty {
-    <p>No recipes found.</p>
-}
-
-<hr/>
-@if (currentRecipe(); as recipe) {
-    <app-recipe-detail [recipe]="recipe"></app-recipe-detail>
-} @else {
-    <p>No recipes selected.</p>
+<p>No recipes found.</p>
 }
