@@ -1,0 +1,48 @@
+<form [formGroup]="recipeForm">
+    <div>
+        <label for="name">Name:</label>
+        <input id="name" type="text" formControlName="name">
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <input id="description" type="text" formControlName="description">
+    </div>
+    <!-- <div>
+        <label for="imgUrl">imgUrl:</label>
+        <input id="imgUrl" type="text" formControlName="imgUrl">
+    </div> -->
+    <div>
+        <label for="ingredients">Ingredients:</label>
+        <button (click)="addIngredient()">+</button>
+        <div formArrayName="ingredients">
+            @for (ingredient of recipeForm.controls.ingredients.controls; track ingredient; let i = $index) {
+            {{ i + 1 }}
+            <div [formGroupName]="i">
+                <div>
+                    <label for="name-{{i}}">Name:</label>
+                    <input id="name-{{i}}" type="text" formControlName="name">
+                </div>
+                <div>
+                    <label for="quantity-{{i}}">Quantity:</label>
+                    <input id="quantity-{{i}}" type="number" formControlName="quantity">
+                </div>
+                <div>
+                    <label for="unit-{{i}}">Unit:</label>
+                    <input id="unit-{{i}}" type="text" formControlName="unit">
+                </div>
+            </div>
+            <button (click)="removeIngredient(i)">Romve {{i + 1}}</button>
+            @if (i
+            < recipeForm.controls.ingredients.controls.length - 1) { <hr />
+            }
+            } @empty {
+            <small>Please add ingredient first!</small>
+            }
+        </div>
+    </div>
+    <div>
+        <button type="submit" [disabled]="recipeForm.invalid" (click)="onSubmit()">Submit</button>
+    </div>
+</form>
+
+<!-- <pre>{{recipeForm.value | json}}</pre> -->

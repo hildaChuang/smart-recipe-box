@@ -1,50 +1,46 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
-import { MOCK_RECIPES } from '../mock-recipes';
-import { RecipeModel } from '../models';
 import { RecipeDetail } from '../recipe-detail/recipe-detail';
 import { FormsModule } from '@angular/forms';
 import { Recipe } from '../recipe';
+import { RecipeForm } from '../recipe-form/recipe-form';
 
 @Component({
   selector: 'app-recipe-list',
   standalone: true,
   imports: [
     RecipeDetail,
-    FormsModule
+    FormsModule,
+    RecipeForm
   ],
   templateUrl: './recipe-list.html',
   styleUrl: './recipe-list.css'
 })
 export class RecipeList {
+  private readonly recipeService = inject(Recipe);
   protected readonly title = signal('My Recipe Box');
- 
-  private recipeService = inject(Recipe);
-  protected readonly recipes = this.recipeService.getRecipes();
+  protected selectedRecipeId = signal<number | null>(null);
 
-  protected currentRecipe = signal<RecipeModel | null>(this.recipes[0]);
-  
+  protected currentRecipe = computed(() => {
+    const filtered = this.filteredRecipes();
+    const id = this.selectedRecipeId();
+    if (id) {
+      return this.recipeService.recipes().find(recipe => recipe.id === id);
+    }
+    return filtered.length > 0 ? filtered[0] : null;
+  });
+
   searchTerm = signal('');
   protected filteredRecipes = computed(() => {
     const search = this.searchTerm();
 
-    return this.recipes.filter(recipe => {
+    return this.recipeService.recipes().filter(recipe => {
       return recipe.name.toLowerCase().includes(search.toLowerCase());
     })
   });
 
-  constructor() {
-    effect(() => {
-      const filtered = this.filteredRecipes();
-      this.currentRecipe.set(filtered.length > 0 ? filtered[0] : null);
-    })
-  }
-
   // 一個受保護的方法，用來處理點擊事件
   protected onSelect(id: number): void {
-    const findRecipe = this.recipes.find(recipe => recipe.id === id);
-    if (findRecipe) {
-      this.currentRecipe.set(findRecipe);
-    }
+    this.selectedRecipeId.set(id);
   }
 
 }
