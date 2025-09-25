@@ -71,28 +71,19 @@
     font-weight: 500;
 }
 
-.servings-buttons button {
-    width: 32px;
-    height: 32px;
-    border: 1px solid #ced4da;
-    background-color: #fff;
-    border-radius: 50%;
-    /* 圓形按鈕 */
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-left: 8px;
-}
-
-.servings-buttons button:hover {
-    background-color: #e9ecef;
+.servings-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* --- 5. 臨時的食材列表 --- */
-.ingredients, pre {
+.ingredients,
+pre {
     background-color: #333;
     color: #f0f0f0;
     padding: 16px;
     border-radius: 8px;
-    white-space: pre-wrap; /* 自動換行 */
-  }
+    white-space: pre-wrap;
+    /* 自動換行 */
+}

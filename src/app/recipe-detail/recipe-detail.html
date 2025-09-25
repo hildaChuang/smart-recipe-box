@@ -13,9 +13,14 @@
 
     <div class="servings-control">
         <h3>Servings: {{ servings() }}</h3>
-        <div class="servings-buttons">
-            <button (click)="updateServings(false)">-</button>
-            <button (click)="updateServings(true)">+</button>
+        <div>
+            <button mat-icon-button aria-label="minus" (click)="updateServings(false)" class="servings-button">
+                <mat-icon>remove</mat-icon>
+            </button>
+
+            <button mat-icon-button aria-label="add" (click)="updateServings(true)" class="servings-button">
+                <mat-icon>add</mat-icon>
+            </button>
         </div>
     </div>
 
@@ -30,6 +35,6 @@
         </ul>
     </div>
     } @else {
-        <p>Loading recipe details...</p>
+    <p>Loading recipe details...</p>
     }
 </div>

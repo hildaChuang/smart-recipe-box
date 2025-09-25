@@ -1,11 +1,17 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { Recipe } from '../recipe';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-recipe-detail',
   standalone: true,
-  imports: [RouterLink],
+  imports: [
+    RouterLink,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './recipe-detail.html',
   styleUrl: './recipe-detail.css'
 })
