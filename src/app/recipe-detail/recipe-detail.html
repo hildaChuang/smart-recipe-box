@@ -14,11 +14,16 @@
     <div class="servings-control">
         <h3>Servings: {{ servings() }}</h3>
         <div>
-            <button mat-icon-button aria-label="minus" (click)="updateServings(false)" class="servings-button">
+            <button mat-icon-button aria-label="minus"
+             (click)="updateServings(false)" class="servings-button"
+             data-testid="minus-button">
                 <mat-icon>remove</mat-icon>
             </button>
 
-            <button mat-icon-button aria-label="add" (click)="updateServings(true)" class="servings-button">
+            <button mat-icon-button aria-label="add"
+             (click)="updateServings(true)" class="servings-button"
+             data-testid="add-button"
+             >
                 <mat-icon>add</mat-icon>
             </button>
         </div>
